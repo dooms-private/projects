@@ -1,7 +1,0 @@
-local api_keys = {
-	'encrypt_API_342a3v592490fv250382f423fo9846t7yhog4o9',
-	'encrypt_API_9a283bh49op3248h82b895ht4v5jl4ac53l3549',
-	'encrypt_API_23b4pah243jbjv542c535yh3oad595oalhbnl4a',
-}
-
-return api_keys
