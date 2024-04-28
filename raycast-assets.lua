@@ -4,7 +4,30 @@ local Modules = {
     RaytraceModule
 }
 
-local CommandModule = spawn(function()
+-- Create Config Folder
+local Configuration = Instance.new('Configuration', cloneref(game.CoreGui))
+
+local function createValue(...)
+    local Data = (...)
+    local Value = Instance.new(Data[1], Configuration)
+    Value.Name = Data[2]
+    Value.Value = Data[3]
+
+    return Value
+end
+
+-- Create Config Values
+createValue("NumberValue", "MaxRayDistance", 50)
+createValue("NumberValue", "Brightness", 0.01)
+createValue("NumberValue", "UpdateSpeed", 0)
+createValue("NumberValue", "Fade", 0.35)
+createValue("NumberValue", "Density", 3)
+createValue("NumberValue", "Range", 15)
+createValue("NumberValue", "Delay", 5)
+createValue("BoolValue", "DebugMode", false)
+createValue("BoolValue", "Enabled", true)
+
+spawn(function()
     repeat print('> Loading CommandModule') task.wait() until game:IsLoaded()
 
     --> COMMAND MODULE <------------------------------------------------------------
@@ -12,7 +35,6 @@ local CommandModule = spawn(function()
     
     --// Variables
     local Player = game.Players.LocalPlayer
-    local Configuration = script.Parent.Parent:WaitForChild('Configuration')
     local ChatService = game:GetService('TextChatService')
     
     --// Functions
@@ -426,4 +448,4 @@ spawn(function()
     return raytraceModule
 end)
 
-return Modules
+return Modules, Configuration
